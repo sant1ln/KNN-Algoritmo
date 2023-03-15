@@ -3,21 +3,28 @@ import pandas as pd
 import seaborn as sns
 from sklearn.neighbors import KNeighborsClassifier
 
-data = {'Masa': [50, 80, 90, 45, 60],
-        'Altura': [1.48, 1.82, 1.85, 1.55, 1.60],
-        'Genero': ['m', 'h', 'h', 'm', 'm']}
+
+datos = pd.read_csv('./person_data.csv', header=0)
+print(list())
+genero = list(datos['Gender'])
+altura = list(datos['Height'])
+peso = list(datos['Weight'])
+
+data = {'Masa': peso,
+        'Altura': altura,
+        'Genero': genero}
 punto_nuevo = {'Masa': [70],
                'Altura': [1.82]}
 df = pd.DataFrame(data)
 punto_nuevo = pd.DataFrame(punto_nuevo)
 # sns.scatterplot(df['Masa'], df['Altura'], hue=df['sex'])
 ax = plt.axes()
-ax.scatter(df.loc[df['Genero'] == 'h', 'Masa'],
-           df.loc[df['Genero'] == 'h', 'Altura'],
+ax.scatter(df.loc[df['Genero'] == 'Male', 'Masa'],
+           df.loc[df['Genero'] == 'Male', 'Altura'],
            c="red",
            label="Hombre")
-ax.scatter(df.loc[df['Genero'] == 'm', 'Masa'],
-           df.loc[df['Genero'] == 'm', 'Altura'],
+ax.scatter(df.loc[df['Genero'] == 'Female', 'Masa'],
+           df.loc[df['Genero'] == 'Female', 'Altura'],
            c="blue",
            label="Mujer")
 ax.scatter(punto_nuevo['Masa'],

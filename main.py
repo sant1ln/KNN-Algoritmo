@@ -14,7 +14,7 @@ data = {'Masa': peso,
         'Altura': altura,
         'Genero': genero}
 punto_nuevo = {'Masa': [70],
-               'Altura': [1.82]}
+               'Altura': [182]}
 df = pd.DataFrame(data)
 punto_nuevo = pd.DataFrame(punto_nuevo)
 # sns.scatterplot(df['Masa'], df['Altura'], hue=df['sex'])
